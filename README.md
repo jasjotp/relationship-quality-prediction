@@ -32,6 +32,8 @@ We begin with **exploratory data analysis (EDA)**, examining the distribution of
 
 Model performance is evaluated using **confusion matrices** on both training and test data, as well as a **micro-averaged one-vs-rest ROC curve** to assess overall discriminative ability across classes. Together, the analysis and models provide an interpretable baseline for understanding which characteristics are most associated with higher or lower reported relationship quality, and they establish a reproducible workflow that can be extended with more complex models in later milestones.
 
+View the rendered analysis here: https://jasjotp.github.io/relationship-quality-prediction/
+
 ---
 
 ## Repository Structure 📁
