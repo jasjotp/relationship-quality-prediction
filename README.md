@@ -16,11 +16,11 @@
 ## Project Title 
 **PROJECT HCMST a.k.a. "How Couples Meet and Stay Together**"
 
-## 👥 Authors
-- Eugene Tse  
-- Jade Chen  
-- Jasjot Parmar  
-- Johnson Leung  
+## 👥 Authors - TEAM 29MDS 💜
+- Eugene Tse 🤘
+- Jade Chen 💅
+- Jasjot Parmar 💪
+- Johnson Leung 👊
 
 ---
 
