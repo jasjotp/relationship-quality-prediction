@@ -25,7 +25,7 @@ In short:
 - **Ask for help early** and answer questions in a supportive way.
 - **Step down considerately** – if you need to reduce your involvement, please communicate and help with handover.
 
-Serious or repeated violations (e.g., harassment, hostile communication, personal attacks) may lead to warnings, removal from specific tasks, or escalation to the instructor/TA. :contentReference[oaicite:1]{index=1}
+Serious or repeated violations (e.g., harassment, hostile communication, personal attacks) may lead to warnings, removal from specific tasks, or escalation to the instructor/TA. 
 
 Please read the full `CODE_OF_CONDUCT.md` for details before contributing. 
 
@@ -223,4 +223,5 @@ Logging off,
 
 TEAM 29MDS
 💜
+
 
