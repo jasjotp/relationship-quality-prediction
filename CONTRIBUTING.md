@@ -40,7 +40,7 @@ The `README.md` includes information for:
 - **Summary**
 - **How-to run analysis**
 - **Dependencies**
-- **Licenses** (Creative Commons)
+- **Licenses** (MIT License)
 
 These sections should be updated and kept in sync with any changes you make to the project. 
 
@@ -50,7 +50,7 @@ These sections should be updated and kept in sync with any changes you make to t
 
 We use **conda** for environment management, with both an `environment.yml` and a generated `conda-lock.yml`.
 
-### 3.1. Using `environment.yml` (recommended for development)
+### 3.1. Using `environment.yml` (recommended)
 
 To create a development environment from the repository root:
 
@@ -223,6 +223,7 @@ Logging off,
 
 TEAM 29MDS
 💜
+
 
 
 
