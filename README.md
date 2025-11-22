@@ -37,6 +37,7 @@ Model performance is evaluated using **confusion matrices** on both training and
 ## Repository Structure 📁
 ```
 ├── analysis.ipynb
+├── index.html
 ├── CODE_OF_CONDUCT.md
 ├── CONTRIBUTING.md
 ├── data/
