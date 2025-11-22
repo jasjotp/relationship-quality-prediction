@@ -54,8 +54,8 @@ We use **conda** for environment management, with both an `environment.yml` and 
 
 To create a development environment from the repository root:
 
-`conda env create -f environment.yml -n dsci522_milestone1` <br>
-`conda activate dsci522_milestone1`
+`conda env create -f environment.yml -n relationship-quality-prediction` <br>
+`conda activate relationship-quality-prediction`
 
 The base environment includes versions of:<br>
 Python 3.12.12<br>
@@ -73,8 +73,8 @@ environment<br>
 
 To install the exact locked environment:
 
-`conda-lock install -n dsci522_milestone1 conda-lock.yml`
-`conda activate dsci522_milestone1`
+`conda-lock install -n relationship-quality-prediction conda-lock.yml`
+`conda activate relationship-quality-prediction`
 
 Key notes:
 -  The lock file is generated from `environment.yml`.
@@ -223,6 +223,7 @@ Logging off,
 
 TEAM 29MDS
 💜
+
 
 
 
