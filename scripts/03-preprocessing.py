@@ -10,7 +10,9 @@ from joblib import dump
 @click.argument("input_csv")
 @click.argument("output_path")
 @click.argument("output_preprocessor")
-
+@click.option('--input_csv', type=str, help="Path of raw csv")
+@click.option('--output_path', type=str, help="Path of processed train/test split")
+@click.option('--output_preprocessor', type=str, help="Path of fitted preprocessor")
 def main(input_csv, output_path, output_preprocessor):
     """
     Preprocesses the data to be used in exploratory data analysis.
