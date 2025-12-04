@@ -7,15 +7,15 @@ from sklearn.preprocessing import OneHotEncoder, OrdinalEncoder, StandardScaler
 from joblib import dump
 
 @click.command()
-@click.argument("input_CSV")
+@click.argument("input_csv")
 @click.argument("output_path")
 @click.argument("output_preprocessor")
 
-def main(input_CSV, output_path, output_preprocessor):
+def main(input_csv, output_path, output_preprocessor):
     """
     Preprocesses the data to be used in exploratory data analysis.
     """
-    df = pd.read_csv(input_CSV)
+    df = pd.read_csv(input_csv)
 
     # Clean Data
 
@@ -36,6 +36,20 @@ def main(input_CSV, output_path, output_preprocessor):
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size = 0.2, random_state = 123
     )
+
+    # after train_test_split
+    X_train_path = Path(output_path).parent / "X_train.csv"
+    X_test_path = Path(output_path).parent / "X_test.csv"
+    y_train_path = Path(output_path).parent / "y_train.csv"
+    y_test_path = Path(output_path).parent / "y_test.csv"
+
+    X_train.to_csv(X_train_path, index=False)
+    X_test.to_csv(X_test_path, index=False)
+
+    # y is a Series, so wrap in DataFrame for consistent columns
+    y_train.to_frame().to_csv(y_train_path, index=False)
+    y_test.to_frame().to_csv(y_test_path, index=False)
+
 
     # preprocess the data by applying the appropriate transformations to each
     numeric_features = ['subject_age', 'relationship_duration', 'children']
