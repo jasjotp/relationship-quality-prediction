@@ -60,6 +60,7 @@ def main(data_file, figure_path):
         output_prefix.name + "_confusion_train.png"
     )
     fig_train.savefig(train_cm_path, bbox_inches="tight")
+    plt.show()
     plt.close(fig_train)
 
     # 4. testing confusion matrix
@@ -76,6 +77,7 @@ def main(data_file, figure_path):
         output_prefix.name + "_confusion_test.png"
     )
     fig_test.savefig(test_cm_path, bbox_inches="tight")
+    plt.show()
     plt.close(fig_test)
 
     # 5. scoring micro-average AUC ROC
