@@ -51,7 +51,7 @@ def main(data_file, figure_path):
     )
     ax_train.grid(False)
     ax_train.set_title(
-        "Confusion Matrix of Logistic Regression using training data"
+        "confusion matrix of logistic regression using training data"
     )
 
     train_cm_path = output_prefix.with_name(
@@ -71,7 +71,7 @@ def main(data_file, figure_path):
     )
     ax_test.grid(False)
     ax_test.set_title(
-        "Confusion Matrix of Logistic Regression using testing data"
+        "confusion matrix of logistic regression using testing data"
     )
 
     test_cm_path = output_prefix.with_name(
@@ -92,7 +92,7 @@ def main(data_file, figure_path):
 
     # print to console for sanity checks
     print(
-        f"Micro-averaged One-vs-Rest ROC AUC score:\n"
+        f"micro-averaged one v rest roc-auc score:\n"
         f"{micro_roc_auc_ovr:.2f}"
     )
 
@@ -110,11 +110,11 @@ def main(data_file, figure_path):
         ax=ax_roc,
     )
     ax_roc.set(
-        xlabel="False Positive Rate",
-        ylabel="True Positive Rate",
+        xlabel="false positive rate",
+        ylabel="true positive rate",
         title=(
-            "Micro-averaged One-vs-Rest\n"
-            "Receiver Operating Characteristic"
+            "micro averaged one v rest\n"
+            "roc"
         ),
     )
 
@@ -137,10 +137,10 @@ def main(data_file, figure_path):
     )
     metrics_df.to_csv(metrics_path, index=False)
 
-    print(f"Saved training confusion matrix to: {train_cm_path}")
-    print(f"Saved testing confusion matrix to: {test_cm_path}")
-    print(f"Saved ROC curve to: {roc_path}")
-    print(f"Saved metrics table to: {metrics_path}")
+    print(f"saved training confusion matrix to: {train_cm_path}")
+    print(f"saved testing confusion matrix to: {test_cm_path}")
+    print(f"saved roc curve to: {roc_path}")
+    print(f"saved metrics table to: {metrics_path}")
 
 
 if __name__ == "__main__":
