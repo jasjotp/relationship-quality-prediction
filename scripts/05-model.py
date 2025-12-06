@@ -22,9 +22,7 @@ from sklearn.preprocessing import LabelBinarizer
 def main(data_file, figure_path):
     """
     training & evaluating a logistic regression model.
-
     INPUT_PATH: path to preprocessed data produced by 03-preprocessing.py
-
     OUTPUT_PREFIX: path/filename prefix for output artifacts
     """
     input_path = Path(data_file)
@@ -33,7 +31,7 @@ def main(data_file, figure_path):
     # ensuring output directory exists
     output_prefix.parent.mkdir(parents=True, exist_ok=True)
 
-    # 1. ;load preprocessed data from 03-preprocessing.py
+    # 1. ;loading in preprocessed data from 03-preprocessing.py
     # expecting a joblib file with data["X_train"], data["X_test"], data["y_train"], data["y_test"]
     data = joblib.load(input_path)
 
@@ -66,7 +64,10 @@ def main(data_file, figure_path):
     # 4. testing confusion matrix
     fig_test, ax_test = plt.subplots()
     ConfusionMatrixDisplay.from_estimator(
-        logreg, X_test, y_test, ax=ax_test
+        logreg, 
+        X_test, 
+        y_test, 
+        ax=ax_test
     )
     ax_test.grid(False)
     ax_test.set_title(
