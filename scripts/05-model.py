@@ -21,7 +21,7 @@ from sklearn.preprocessing import LabelBinarizer
 @click.argument("figure_path", type=click.Path())
 def main(data_file, figure_path):
     """
-    Train & evaluate a logistic regression model.
+    training & evaluating a logistic regression model.
 
     INPUT_PATH: path to preprocessed data produced by 03-preprocessing.py
 
