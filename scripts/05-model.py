@@ -8,13 +8,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import (
-    RocCurveDisplay,
-    ConfusionMatrixDisplay,
-    roc_auc_score,
-)
+from sklearn.metrics import RocCurveDisplay, ConfusionMatrixDisplay, roc_auc_score
 from sklearn.preprocessing import LabelBinarizer
-
 
 @click.command()
 @click.argument("data_file", type=click.Path(exists=True))
