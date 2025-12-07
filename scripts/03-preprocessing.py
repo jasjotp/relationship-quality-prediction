@@ -92,8 +92,6 @@ def main(input_csv, output_path, output_preprocessor):
         (OrdinalEncoder(), ordinal_features)
     )
 
-    preprocessor.fit(X_train)
-
     # save the fitted preprocessor
     dump(preprocessor, output_preprocessor)
 

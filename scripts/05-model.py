@@ -10,6 +10,7 @@ import matplotlib.pyplot as plt
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import RocCurveDisplay, ConfusionMatrixDisplay, roc_auc_score
 from sklearn.preprocessing import LabelBinarizer
+from sklearn.pipeline import make_pipeline
 
 @click.command()
 @click.argument("data_file", type=click.Path(exists=True))
@@ -28,15 +29,18 @@ def main(data_file, figure_path):
 
     # 1. ;loading in preprocessed data from 03-preprocessing.py
     # expecting a joblib file with data["X_train"], data["X_test"], data["y_train"], data["y_test"]
-    data = joblib.load(input_path)
-
-    X_train = data["X_train"]
-    X_test = data["X_test"]
-    y_train = data["y_train"]
-    y_test = data["y_test"]
+    preprocessor = joblib.load(input_path)
+    
+    X_train = pd.read_csv('data/processed/X_train.csv')
+    X_test = pd.read_csv("data/processed/X_test.csv")
+    y_train = pd.read_csv('data/processed/y_train.csv').squeeze()
+    y_test = pd.read_csv('data/processed/y_test.csv').squeeze()
 
     # 2. fitting logistic regression model
-    logreg = LogisticRegression(max_iter=1000)
+    logreg = make_pipeline(
+        preprocessor,
+        LogisticRegression(max_iter=1000))
+    
     logreg.fit(X_train, y_train)
 
     # 3. training confusion matrix
@@ -53,8 +57,6 @@ def main(data_file, figure_path):
         output_prefix.name + "_confusion_train.png"
     )
     fig_train.savefig(train_cm_path, bbox_inches="tight")
-    plt.show()
-    plt.close(fig_train)
 
     # 4. testing confusion matrix
     fig_test, ax_test = plt.subplots()
@@ -73,8 +75,6 @@ def main(data_file, figure_path):
         output_prefix.name + "_confusion_test.png"
     )
     fig_test.savefig(test_cm_path, bbox_inches="tight")
-    plt.show()
-    plt.close(fig_test)
 
     # 5. scoring micro-average AUC ROC
     y_score = logreg.predict_proba(X_test)
