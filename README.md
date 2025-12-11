@@ -50,14 +50,15 @@ View the rendered analysis here: https://jasjotp.github.io/relationship-quality-
 
 ### 1.1. Clone the repository
 
-`git clone git@github.com:jasjotp/relationship-quality-prediction.git` <br> `cd relationship-quality-prediction`
+```git clone git@github.com:jasjotp/relationship-quality-prediction.git``` <br> ```cd relationship-quality-prediction```
 
 ------------------------------------------------------------------------
 
 ## 2. Create the conda environment
 
-`conda env create -f environment.yml -n relationship-quality-prediction` <br> `conda activate relationship-quality-prediction`
-`conda install -c conda-forge conda-lock`
+```conda env create -f environment.yml -n relationship-quality-prediction``` <br> 
+```conda activate relationship-quality-prediction``` <br>
+```conda install -c conda-forge conda-lock```
 
 ------------------------------------------------------------------------
 
@@ -65,7 +66,7 @@ View the rendered analysis here: https://jasjotp.github.io/relationship-quality-
 
 For reproducible installs:
 
-`conda-lock install -n relationship-quality-prediction conda-lock.yml` <br> `conda activate relationship-quality-prediction`
+```conda-lock install -n relationship-quality-prediction conda-lock.yml``` <br> ```conda activate relationship-quality-prediction```
 
 ------------------------------------------------------------------------
 
@@ -75,15 +76,15 @@ For reproducible installs:
 
 Runs all steps: download, validate, preprocess, generate figures, and train the model.
 
-`make all`
+```make all```
 
 ### Individual steps
 
-1.  Download raw data `make download`
-2.  Validate the raw data `make validate`
-3.  Preprocess the data and generate train/test splits `make preprocess`
-4.  Generate EDA figures `make eda`
-5.  Train and evaluate model `make model`
+1.  Download raw data ```make download```
+2.  Validate the raw data ```make validate```
+3.  Preprocess the data and generate train/test splits ```make preprocess```
+4.  Generate EDA figures ```make eda```
+5.  Train and evaluate model ```make model```
 
 ------------------------------------------------------------------------
 
@@ -91,9 +92,9 @@ Runs all steps: download, validate, preprocess, generate figures, and train the 
 
 Run<br>
 
-`jupyter lab`<br>
+```jupyter lab```<br>
 
-Open the `analysis.ipynb` file to run the exploratory analysis and code.
+Open the ```analysis.ipynb``` file to run the exploratory analysis and code.
 
 ------------------------------------------------------------------------
 
@@ -104,19 +105,24 @@ All required packages are listed in environment.yml:
 Key dependencies include:<br>
 
 ```         
-Python 3.12.12
+python 3.12.12
 numpy 2.3.5
 pandas 2.3.3
-matplotlib 3.10.0
+matplotlib 3.10.8 
 seaborn 0.13.2
-altair 6.0.0
 scikit-learn 1.7.2
-conda 25.7
+pip 25.3
+pointblank 0.16.0
+pandera 0.25.0
+pytest 9.0.2
+click 8.3.1
+ipykernel 7.1.0
+quarto 1.8.26
 ```
 
 To update dependencies, modify `environment.yml` and regenerate the lockfile:
 
-`conda-lock -f environment.yml --lockfile conda-lock.yml`
+```conda-lock -f environment.yml --lockfile conda-lock.yml```
 
 ------------------------------------------------------------------------
 
