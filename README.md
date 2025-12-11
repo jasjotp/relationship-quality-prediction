@@ -58,6 +58,8 @@ View the rendered analysis here: https://jasjotp.github.io/relationship-quality-
 
 `conda env create -f environment.yml -n relationship-quality-prediction` <br> `conda activate relationship-quality-prediction`
 
+`conda install -c conda-forge conda-lock`
+
 ------------------------------------------------------------------------
 
 ## 3. Use the Lockfile
