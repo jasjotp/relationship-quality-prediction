@@ -40,23 +40,23 @@ def main():
     print(f"Loading preprocessed data from: {input_path}")
     X_train, X_test, y_train, y_test = joblib.load(input_path)
 
-    # -------------------------
+    
     # train-logistic-regression
-    # -------------------------
+    
     print("Training Logistic Regression model...")
     model = LogisticRegression(max_iter=500)
     model.fit(X_train, y_train)
 
-    # -------------------------
+ 
     # save-trained-model
-    # -------------------------
+    
     output_model_path.parent.mkdir(parents=True, exist_ok=True)
     print(f"Saving trained model to: {output_model_path}")
     joblib.dump(model, output_model_path)
 
-    # -------------------------
+    
     # evaluation / reporting
-    # -------------------------
+    
 
     # predictions
     y_train_pred = model.predict(X_train)
