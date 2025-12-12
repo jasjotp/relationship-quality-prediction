@@ -54,22 +54,36 @@ View the rendered analysis here: https://jasjotp.github.io/relationship-quality-
 
 ------------------------------------------------------------------------
 
-## 2. Create the conda environment
+## 2. Create the comptational environment
+
+<details>
+<summary><b>Option 1: Use `environment.yml`</b></summary>
 
 `conda env create -f environment.yml -n relationship-quality-prediction` <br> `conda activate relationship-quality-prediction`
-`conda install -c conda-forge conda-lock`
+
+</details>
+------------------------------------------------------------------------
+
+<details>
+<summary><b>Option 2: Use `conda-lock.yml`</b></summary>
+
+`conda-lock install --name relationship-quality-prediction conda-lock.yml` <br> `conda activate relationship-quality-prediction`
+
+</details>
+------------------------------------------------------------------------
+
+<details>
+<summary><b>Option 3: Use `docker-compose.yml`</b></summary>
+
+`docker compose run --rm dsci522_milestone4` <br> `make all`
+
+</details>
+
+After you are done, type `exit` to leave the docker container.
 
 ------------------------------------------------------------------------
 
-## 3. Use the Lockfile
-
-For reproducible installs:
-
-`conda-lock install -n relationship-quality-prediction conda-lock.yml` <br> `conda activate relationship-quality-prediction`
-
-------------------------------------------------------------------------
-
-## 4. Run the Analysis with Make
+## 3. Run the Analysis with Make
 
 ### Full pipeline
 
@@ -87,7 +101,7 @@ Runs all steps: download, validate, preprocess, generate figures, and train the 
 
 ------------------------------------------------------------------------
 
-## 5. Launch the Analysis Notebook
+## 4. Launch the Analysis Notebook
 
 Run<br>
 
@@ -97,21 +111,26 @@ Open the `analysis.ipynb` file to run the exploratory analysis and code.
 
 ------------------------------------------------------------------------
 
-## 6. Dependencies
+## 5. Dependencies
 
 All required packages are listed in environment.yml:
 
 Key dependencies include:<br>
 
 ```         
-Python 3.12.12
-numpy 2.3.5
-pandas 2.3.3
-matplotlib 3.10.0
-seaborn 0.13.2
-altair 6.0.0
-scikit-learn 1.7.2
-conda 25.7
+  - python=3.12.12
+  - numpy=2.3.5
+  - pandas=2.3.3
+  - matplotlib=3.10.8 
+  - seaborn=0.13.2
+  - scikit-learn=1.7.2
+  - pip=25.3
+  - pointblank=0.16.0
+  - pandera=0.25.0
+  - pytest 9.0.2
+  - click=8.3.1
+  - ipykernel=7.1.0
+  - quarto=1.8.26
 ```
 
 To update dependencies, modify `environment.yml` and regenerate the lockfile:
