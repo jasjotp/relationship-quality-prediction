@@ -36,7 +36,9 @@ eda: $(FIG_DIR)/dist-relationship-quality.png \
      $(FIG_DIR)/corr_plot.png \
      $(FIG_DIR)/dist-income-category.png
 
-$(FIG_DIR)/dist-relationship-quality.png: $(PROCESSED_CSV)
+$(FIG_DIR)/dist-relationship-quality.png \
+$(FIG_DIR)/corr_plot.png \
+$(FIG_DIR)/dist-income-category.png: $(PROCESSED_CSV)
 	mkdir -p $(FIG_DIR)
 	python scripts/04-eda.py $(PROCESSED_CSV) $(FIG_DIR)
 

@@ -51,6 +51,7 @@ def main(data_file, figure_path):
     make_histogram(hcmst, 'subject_income_category',
                    f'{figure_path}/dist-income-category.png',
                    title='Distribution of Income Category',
+
                    bin=23, xtick_label=[s.replace('_', ' ') for s in income_order])
 
 
