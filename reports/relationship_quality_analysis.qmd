@@ -1,5 +1,5 @@
 ---
-title: Predicting Relationship Quality from Relationship Attributes in 2022
+title: "Predicting Relationship Quality from Relationship Attributes in 2022"
 jupyter: python3
 author:
   - name: "Jasjot Parmar"
@@ -19,18 +19,21 @@ author:
       - name: "University of British Columbia"
         department: "Master of Data Science"
 execute:
-    echo: False 
+  echo: false
 format:
-    html:
-        toc: true
-        number-sections: true
-        embed-resources: true
-    pdf:
-        toc: true
-        number-sections: true
-        fig-pos: 'H'
-editor: source 
+  html:
+    toc: true
+    number-sections: true
+    embed-resources: true
+    fig-cap-location: top
+  pdf:
+    toc: true
+    number-sections: true
+    fig-pos: "H"
+    fig-cap-location: top
+fig-numbering: true
 bibliography: references.bib
+editor: source
 ---
 
 ```{python}
