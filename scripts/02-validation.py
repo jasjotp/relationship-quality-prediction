@@ -244,7 +244,31 @@ def data_validation(input_csv_path, output_csv_path):
     else:
         click.echo('FAILED:    Target/response variable DOES NOT follow expected distribution')
 
-    # Data validation 10: N.A.
+    #### Data Validation 10: No anomalous association between target/response and features (leakage check)
+
+    # NOTE: Because the response variable is categorical linear correlation is not well defined.
+    # Instead here we verified that no explanatory variable exhibits a deterministic (or near-deterministic)
+    # relationship with the response by confirming sufficient within-class variability across all predictors.
+
+    target_assoc_check = pb.Validate(data=hcmst).col_vals_expr(
+        expr=lambda df: (
+            df.groupby("relationship_quality")["subject_age"].mean().nunique() > 1
+            and
+            df.groupby("relationship_quality")["relationship_duration"].mean().nunique() > 1
+            and
+            df.groupby("relationship_quality")["children"].mean().nunique() > 1
+            and
+            df.groupby("relationship_quality")["married"].nunique().max() > 1
+            and
+            df.groupby("relationship_quality")["subject_income_category"].nunique().max() > 1
+        )
+    ).interrogate()
+
+    if target_assoc_check.all_passed():
+        click.echo("SUCCESS:    No anomalous or deterministic association detected between target and features")
+    else:
+        raise ValueError("FAILED:     Potential leakage or deterministic association between target and at least one feature")
+
 
     #### Data Validation 11: No anomalous correlations between features/explanatory variables
 
