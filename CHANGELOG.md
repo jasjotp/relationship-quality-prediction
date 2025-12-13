@@ -65,7 +65,7 @@ All changes made to this project after receiving peer and TA feedback are docume
 
 GENE-008's (Eugene Tse) changes
 
-Addressed TA and Peer comments (see GitHub Issues on the)
+Addressed TA and Peer comments (see GitHub Issues)
 - dec966c5e47ce802f20a29ae6a02d35192a80acb
 
 Added Dummy variable (as per Peer Christine requested)
