@@ -50,7 +50,7 @@ def main(data_file, figure_path):
     make_histogram(hcmst, 'subject_income_category',
                    f'{figure_path}/dist-income-category.png',
                    title='Distribution of Income Category',
-                   bins=23)
+                   bin=23)
 
 
 if __name__ == "__main__":
