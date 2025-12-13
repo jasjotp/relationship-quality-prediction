@@ -1,0 +1,625 @@
+% Options for packages loaded elsewhere
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  letterpaper,
+  DIV=11,
+  numbers=noendperiod]{scrartcl}
+\usepackage{xcolor}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{5}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+% Make \paragraph and \subparagraph free-standing
+\makeatletter
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+\makeatother
+
+
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+
+
+% definitions for citeproc citations
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+\makeatletter
+ % allow citations to break across lines
+ \let\@cite@ofmt\@firstofone
+ % avoid brackets around text for \cite:
+ \def\@biblabel#1{}
+ \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+\makeatother
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
+ {\begin{list}{}{%
+  \setlength{\itemindent}{0pt}
+  \setlength{\leftmargin}{0pt}
+  \setlength{\parsep}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+   \setlength{\leftmargin}{\cslhangindent}
+   \setlength{\itemindent}{-1\cslhangindent}
+  \fi
+  % set entry spacing
+  \setlength{\itemsep}{#2\baselineskip}}}
+ {\end{list}}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+
+
+
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+
+
+ 
+
+
+\KOMAoption{captions}{tableheading}
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Table of contents}
+\else
+  \newcommand\contentsname{Table of contents}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{List of Figures}
+\else
+  \newcommand\listfigurename{List of Figures}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{List of Tables}
+\else
+  \newcommand\listtablename{List of Tables}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figure}
+\else
+  \newcommand\figurename{Figure}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Table}
+\else
+  \newcommand\tablename{Table}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listing}
+\newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Predicting Relationship Quality from Relationship Attributes in 2022},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+
+\title{Predicting Relationship Quality from Relationship Attributes in
+2022}
+\author{Jasjot Parmar, Eugene Tse, Jade Chen, and Johnson Leung}
+\date{}
+\begin{document}
+\maketitle
+
+\renewcommand*\contentsname{Table of contents}
+{
+\hypersetup{linkcolor=}
+\setcounter{tocdepth}{3}
+\tableofcontents
+}
+
+\section{Summary}\label{summary}
+
+In this project, we used a dataset on based on survey responses to
+common relationship questions to develop a logistic regression model to
+classify relationships into one of five relationship quality statuses:
+excellent, good, fair, poor, or very poor. The model developed below
+uses common relationship-based features such as whether the subject is
+married or not and how many children the subject has in the
+relationship.
+
+\section{Introduction}\label{introduction}
+
+Relationship quality classification is an important topic for couples to
+be aware of, particularly when trying to maximize the amount of
+satisfaction each partner receives from the relationship. Accurate
+relationship quality classification allows couples in relationships to
+assess the quality of their relationship to develop better targeted
+strategies to improve or maintain that relationship quality. It is often
+difficult for couples to estimate the perceived quality of their
+relationship, so we investigate below if our machine learning model can
+correctly classify the quality of a relationship, based on common
+relationship attributes. The below analysis tries to answer: How well do
+relationship characteristics such as age, income category, marital
+status, relationship duration, and number of children predict
+relationship quality?
+
+The dataset contains 1293 survey responses of common relationship
+characteristics such as the income category of the respondent and their
+estimated relationship quality (our target to predict). This dataset
+(Diverse Data Hub (n.d.)) is originally based on the How Couples Meet
+and Stay Together survey (Rosenfeld, Thomas, and Hausen (2023)). We
+accessed the CSV version of this dataset directly from CRAN (R Core Team
+(n.d.)). The README.md file contains seperate conda lock files that
+explain how to run the environment if you want to run the code. We used
+principles from the Reproducible and Trustworthy Workflows for Data
+Science textbook (Timbers et al. (n.d.)) on conda lock files to manage
+enviornments.
+
+In our analysis below, we investigate whether a logistic regression
+model can correctly classify relationship attributes into one of five
+relationship quality statuses: excellent, good, fair, poor, or very
+poor.
+
+\section{EDA}\label{eda}
+
+We start by initially confirming our data was read in to a pandas
+DataFrame object, as shown in Table~\ref{tbl-initial-eda}.
+
+\begin{longtable}[]{@{}llllllllllllllllllllll@{}}
+
+\caption{\label{tbl-initial-eda}Peek of demographic and relationship
+variables included in this analysis.}
+
+\tabularnewline
+
+\toprule\noalign{}
+& subject\_age & subject\_education & subject\_sex & subject\_ethnicity
+& subject\_income\_category & subject\_employment\_status &
+same\_sex\_couple & married & sex\_frequency & flirts\_with\_partner &
+... & relationship\_duration & children & rel\_change\_during\_pandemic
+& inc\_change\_during\_pandemic & subject\_had\_covid &
+partner\_had\_covid & subject\_vaccinated & partner\_vaccinated &
+agree\_covid\_approach & relationship\_quality \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 53.0 & high\_school\_grad & female & white & 35k\_40k &
+working\_paid\_employee & no & not\_married & once\_or\_twice\_a\_week &
+a\_few\_times\_a\_week & ... & 1.500000 & 2.0 & better\_than\_before &
+no\_change & no & yes & not\_vaccinated & not\_vaccinated &
+completely\_agree & excellent \\
+1 & 72.0 & some\_college & female & white & 75k\_85k &
+working\_paid\_employee & no & married & once\_a\_month\_or\_less &
+never & ... & 57.416668 & 1.0 & no\_change & worse & no & no &
+fully\_vaccinated\_and\_booster & fully\_vaccinated\_and\_booster &
+mostly\_agree & good \\
+2 & 43.0 & associate\_degree & male & white & 75k\_85k &
+working\_paid\_employee & no & married & once\_or\_twice\_a\_week &
+a\_few\_times\_a\_week & ... & 22.333334 & 5.0 & no\_change & worse & no
+& no & fully\_vaccinated\_and\_booster & fully\_vaccinated\_and\_booster
+& completely\_agree & excellent \\
+3 & 64.0 & some\_college & male & white & 75k\_85k &
+working\_paid\_employee & no & married & once\_or\_twice\_a\_week &
+1\_to\_3\_times\_a\_month & ... & 28.250000 & 2.0 & no\_change &
+no\_change & no & no & fully\_vaccinated\_and\_booster &
+fully\_vaccinated\_and\_booster & completely\_agree & good \\
+4 & 60.0 & high\_school\_grad & female & black & 75k\_85k &
+working\_paid\_employee & no & married & once\_or\_twice\_a\_week &
+a\_few\_times\_a\_week & ... & 38.916668 & 3.0 & better\_than\_before &
+no\_change & no & no & not\_vaccinated & partially\_vaccinated &
+completely\_agree & excellent \\
+
+\end{longtable}
+
+We can see from the distribution of the Relationship Quality categorical
+variable, that the dataset contains imbalanced classes, with a very
+large number of respondents reporting excellent or good relationship
+quality and a much lower number of respondents reporting fair, poor, and
+very poor relationship quality.
+
+\begin{figure}[H]
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{../figures/dist-relationship-quality.png}}
+
+}
+
+\caption{\label{fig-relationship-quality-dist}Relationship Quality Score
+Distributiom}
+
+\end{figure}%
+
+Our numeric predictor / input features show a high correlation between
+subject age and relationship duration with a \(\rho\) value of 0.736,
+which means that as the subject's age increases, their relationship
+duration increases. Subject age and (number of) children show a weak
+negative correlation of -0.326, indicating that as subject age
+increases, the reported number of children slightly decreases.
+
+\begin{figure}[H]
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{../figures/corr_plot.png}}
+
+}
+
+\caption{\label{fig-corr-plot}Correlation Heatmap}
+
+\end{figure}%
+
+The distribution of income categories show that we have a left skewed
+distribution, with most respondents making over 50k per year. For
+respondents who earn \textgreater= 50k / year, income distribution
+between 50k and 250k+ seems to be roughly uniformly distributed, showing
+that there is a pretty even spread of incomes between respondents as
+income passes 50k.
+
+\begin{figure}[H]
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{../figures/dist-income-category.png}}
+
+}
+
+\caption{\label{fig-income-category}Income Category Distribution}
+
+\end{figure}%
+
+We then split up the data into the relationship features that we want to
+predict relationship quality with. Input features include: Subject Age,
+Subject Income Category, Martial Status, Relationship Duration, and
+Number of Children, before splitting the data into train and test
+splits. We then conduct simple data cleaning through changing relevant
+numeric features such as age and number of children into integers,
+before reordering the income category feature to be ordered in ascending
+order by income.
+
+\section{Methods}\label{methods}
+
+Numeric features have different scales, with age having much larger
+values than relationship duration and number of children. Therefore,
+Standard Scaler is applied to numeric features so all numeric features
+contribute equally to the logistic regression model. Ordinal features
+such as subject income category are converted to ordinal categories, as
+their categories have an order based on the income of the subject.
+Categorical features such as marital status are one hot encoded,
+resulting in one column indicating martial status or not (0 / 1). Each
+transformation is wrapped in a column transformer.
+
+A scikit-learn pipeline is used to preprocess and train the model on the
+training data in one step. The pipeline first applies the preprocessor
+above to the training set to standardize numeric features and one hot
+encodes categorical features, before training the Logistic Regression
+model. The Logistic Regression model addresses our above issue regarding
+the class imbalance in relationship quality by giving the minority class
+a bigger penalty, so the model pays more attention to that observation
+
+\section{Results}\label{results}
+
+To see how our model did on predicting relationship quality based on the
+training data, we plot a confusion matrix Figure~\ref{fig-cm-train}. We
+see that for respondents with excellent relationship quality, the model
+only correctly predicts 49.1\% of relationships that have excellent
+relationship quality correctly (Recall = 0.491). Of all relationships
+that are predicted to have excellent relationship quality,the model
+correctly predicts 58.6\% of them (Precision = 0.586).
+
+For respondents with Good relationship quality, the model only correctly
+predicts 2.0\% of them. For all relationships that are predicted to have
+good relationship quality, the model correctly predicts 40.0\% of them.
+
+For respondents with Fair relationship quality, the model only correctly
+predicts 28.6\% of them. Of all relationships that are predicted to have
+Fair relationship quality, the model correctly predicts 13.6\% of them.
+
+For respondents with Poor relationship quality, the model correctly
+predicts 22.7\% of them. For all relationships that are predicted to
+have Poor relationship quality, the model only correctly predicts 3.0\%
+of them.
+
+For respondents with Very Poor relationship quality, the model correctly
+predicts 100.0\% of them (there are very few observations with very poor
+relationship quality so this prediction should be used carefully). Out
+of all relationships that are predicted to have very poor relationship
+quality, the model correctly predicts only 0.9\% of them.
+
+\begin{figure}[H]
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{../figures/model_confusion_train.png}}
+
+}
+
+\caption{\label{fig-cm-train}Confusion Matrix Training Data}
+
+\end{figure}%
+
+To see how our model did on predicting relationship quality based on the
+testing set Figure~\ref{fig-cm-test}, we plot a confusion matrix for
+predictions on the test set. We see that for respondents with excellent
+relationship quality, the model only correctly predicts 51.1\% of
+relationships that have excellent relationship quality correctly (Recall
+= 0.511). Of all relationships that are predicted to have excellent
+relationship quality,the model correctly predicts 54.3\% of them
+(Precision = 0.543).
+
+For respondents with Good relationship quality, the model only correctly
+predicts 0.0\% of them. For all relationships that are predicted to have
+good relationship quality, the model correctly predicts 0.0\% of them.
+
+For respondents with Fair relationship quality, the model only correctly
+predicts 15.8\% of them. Of all relationships that are predicted to have
+Fair relationship quality, the model correctly predicts 10.3\% of them.
+
+For respondents with Poor relationship quality, the model correctly
+predicts 0.0\% of them, as there is only 1 poor relationship quality
+observation in the test set. For all relationships that are predicted to
+have Poor relationship quality, the model only correctly predicts 0.0\%
+of them, since the model predicted an observation to have Poor
+relationship quality 0 times.
+
+For respondents with Very Poor relationship quality, the model correctly
+predicts 0.0\% of them. Out of all relationships that are predicted to
+have very poor relationship quality, the model only correctly predicts
+0.0\% of them.
+
+\begin{figure}[H]
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{../figures/model_confusion_test.png}}
+
+}
+
+\caption{\label{fig-cm-test}Confusion Matrix Test Data}
+
+\end{figure}%
+
+Our micro-averaged ROC curve (Figure~\ref{fig-roc}) above shows a AUC of
+0.621. This means that our model is not the strongest at correctly
+predicting relationship quality based on the input relationship features
+we specified above. The ROC curve shows that our model is only slightly
+better than randomly guessing the relationship quality class, meaning
+that our model's accuracy is pretty weak.
+
+\begin{figure}[H]
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{../figures/model_roc_micro_ovr.png}}
+
+}
+
+\caption{\label{fig-roc}ROC Curve}
+
+\end{figure}%
+
+\section{Discussion}\label{discussion}
+
+Our findings above indicate a poor overall accuracies across each class
+on the testing set, with an overall test accuracy from the confusion
+matrix of 28.2\% meaning that the model is poor at predicting the
+correct relationship quality based on features such as age,
+income\_category, marital status, relationship duration, and number of
+children. We also see that the precision and recall of each relationship
+quality class is quite low in the training and testing set. Our poor
+accuracy, precision, and recall for all relationship quality classes
+tells us that with a Logistic Regression model, the features we included
+(age, income category, marital status, relationship duration, and number
+of children) do not predict relationship quality well.
+
+This is generally what we expected to find because the features we chose
+are mostly external or demographic traits about the relationship that
+one can argue, do not define the emotional or personal status of a
+relationship. Since our features do not include deeper characteristics
+that could matter more for relationship quality compared to demographic
+features like age, it makes sense our Logistic Regression model is
+performing poorly.
+
+These findings could change how people in relationships and researchers
+think about what defines relationship quality. Since our above results
+show that demographic or external features like age, number of children,
+income category, and relationship duration were not good predictors of
+relationship quality with our Logistic Regression model, people could
+place less focus on these relationship features when gauging the
+relationship quality of their own relationship. The results could lead
+to people in relationships placing more importance on emotional or
+behavioural metrics in relationships instead like how often partners
+openly communicate about problems. These emotional and behavioural
+relationship features could be much better predictors of relationship
+quality. These results could ultimately impact how relationship quality
+is assessed, by changing the focus to deeper personal relationship
+dynamics instead of surface level demographic features.
+
+Accuracy was used as an initial, intuitive measure of how often the
+model correctly classified relationship quality, providing a simple
+baseline for overall performance. However, because the classes were
+imbalanced, accuracy alone could be misleading, as high values may be
+driven primarily by correct predictions of the dominant categories.
+Therefore, ROC AUC was also reported to evaluate the model's ability to
+discriminate between classes across decision thresholds using predicted
+probabilities, offering a more informative and imbalance-robust
+assessment of model performance.
+
+Another issue we did not address was hyperparameter optimization. For
+logistic regression, tuning could focus on the regularization strength
+(C) and the type of penalty (L1, L2, or elastic net). Adjusting C
+controls the bias--variance trade-off: smaller values impose stronger
+regularization and can help prevent overfitting, particularly given
+correlated predictors such as age and relationship duration. If feature
+selection or sparsity were desired, an L1 or elastic-net penalty could
+be explored. These hyperparameters could be tuned using
+cross-validation, ideally with a class-weighted or balanced scoring
+metric (e.g., macro F1 or balanced accuracy).
+
+More generally, cross-validated hyperparameter search (e.g., grid search
+or randomized search) would allow systematic comparison of models under
+consistent evaluation criteria. To avoid optimistic bias, hyperparameter
+tuning should be performed only on the training data, with the test set
+held out strictly for final evaluation. Given the class imbalance,
+stratified cross-validation would be especially important to preserve
+class proportions within folds.
+
+Another issue that could have been incorporated into our analysis is the
+reweighting of class imbalance \texttt{class\_weight="balanced"}, which
+reweights the loss function so that errors on minority classes carry
+more importance. We see that our responding classes are skewed towards
+categories `excellent' and/or `good' and would improve prediction
+performance. This approach is simple, does not alter the data
+distribution, and is often preferable to resampling for smaller datasets
+like yours, as it reduces the risk of overfitting while directly
+addressing imbalance at training time.
+
+We had only tested one model - logistic regression. We could have also
+used An SVM with a linear or kernelized decision boundary and it could
+be effective, particularly if the relationship between predictors and
+quality is not strictly linear. Class weights can be incorporated to
+address imbalance. However, SVMs are less interpretable and can be
+sensitive to feature scaling and hyperparameter choices, making them
+harder to explain in a social-science context.
+
+The future questions our above results could lead to are:
+
+\begin{itemize}
+\item
+  What emotional or personal relationship features (that relate to both
+  partners) best predict relationship quality?
+\item
+  Could using a dataset that contains data for relationship matrics from
+  both partners in the relationship improve accuracy of our above
+  Logisitc Regression model?
+\item
+  How much better (or worse) would non-linear models such as decision
+  trees perform on the same above dataset?
+\item
+  Which relationship features that we used above contribute most to
+  predicting relationship quality?
+\end{itemize}
+
+\section{References}\label{references}
+
+\phantomsection\label{refs}
+\begin{CSLReferences}{1}{0}
+\bibitem[\citeproctext]{ref-diversedatahub}
+Diverse Data Hub. n.d. {``How Couples Meet and Stay Together.''}
+\url{https://diverse-data-hub.github.io/website_files/description_pages/hcmst.html}.
+
+\bibitem[\citeproctext]{ref-cran_hcmst}
+R Core Team. n.d. {``Hcmst.csv {[}Data Set{]}.''} {CRAN}.
+\url{https://cran.r-project.org/incoming/UL/diversedata/data-clean/hcmst.csv}.
+
+\bibitem[\citeproctext]{ref-hcmst_data_stanford}
+Rosenfeld, Michael J., Reuben J. Thomas, and Sonia Hausen. 2023. {``How
+Couples Meet and Stay Together 2017--2020--2022 Combined Dataset {[}Data
+Set{]}.''} {Stanford University Libraries}.
+\url{https://data.stanford.edu/hcmst2017}.
+
+\bibitem[\citeproctext]{ref-conda_lock_mds}
+Timbers, Tiffany A., Joel Ostblom, Florencia D'Andrea, Rodolfo
+Lourenzutti, and Daniel Chen. n.d. {``Conda Lock: Reproducible Lock
+Files for Conda Environments.''} In \emph{Reproducible and Trustworthy
+Workflows for Data Science}. UBC Master of Data Science.
+\url{https://ubc-dsci.github.io/reproducible-and-trustworthy-workflows-for-data-science/lectures/090-conda-lock.html}.
+
+\end{CSLReferences}
+
+
+
+
+\end{document}
