@@ -224,6 +224,11 @@ def data_validation(input_csv_path, output_csv_path):
 
     #### Data Validation 9: Target/response variable follows expected distribution
 
+    # NOTE : The expected distribution of Response variable is unclear.
+    # Therefore, we only check the class frequency is approximately the same as when the data is retrieved
+    # at the start of the project. Also, this step acts as a check to make sure that the response variable
+    # is not too imbalanced so that it would adversely affect model performance.
+
     response_distribution = pb.Validate(data = hcmst).col_vals_expr(
         expr=lambda df: (
                 df["relationship_quality"].value_counts(normalize=True).get("excellent", 0) <= 0.6
