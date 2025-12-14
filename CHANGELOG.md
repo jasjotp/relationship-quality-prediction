@@ -70,3 +70,50 @@ Addressed TA and Peer comments (see GitHub Issues)
 
 Added Dummy variable (as per Peer Christine requested)
 - d46bbd5d996dab91aa3a0b3e32982f941c09ed77
+
+---
+
+#### Implemented full Makefile workflow
+
+* **Feedback:** Project needed a root-level Makefile with `all` and `clean` targets, proper dependencies, and documentation.
+* **Change made:**
+
+  * Added a complete Makefile to run the pipeline end to end.
+  * Implemented `.PHONY` `all` and `clean` targets.
+  * Refactored targets to use dependency-based execution.
+  * Standardized paths to use the `data/processed` workflow.
+  * Suppressed Pandera import warnings, fixed histogram tick labels, ignored `__pycache__`, and regenerated all outputs.
+* **Evidence:**
+
+  * Pull request: #54
+  * Related commits include Makefile refactors, preprocessing cleanup, plot fixes, and full pipeline regeneration.
+
+#### Added preprocessing test
+
+* **Feedback:** Preprocessing logic required test coverage.
+* **Change made:** Added a preprocessing unit test. Abstraction was handled by a teammate.
+* **Evidence:** Pull request: #56
+
+#### Revised report formatting and content
+
+* **Feedback:** Report was missing HTML authors, affiliations, figure numbers, and had grammar issues.
+* **Change made:**
+
+  * Added authors and affiliations.
+  * Added figure numbers and labels.
+  * Fixed grammar and spelling issues.
+* **Evidence:** Pull request: #58
+
+#### Added contact email to Code of Conduct
+
+* **Feedback:** `CODE_OF_CONDUCT.md` lacked a contact email.
+* **Change made:** Added an email contact for reporting issues.
+* **Evidence:** Pull request: #40
+
+#### Added missing data validation check
+
+* **Feedback:** Project was missing a check for target–feature leakage.
+* **Change made:** Added a target–feature leakage check using `pointblank`.
+* **Evidence:** Pull request: #59
+
+---
