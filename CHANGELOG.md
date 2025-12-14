@@ -141,4 +141,14 @@ Added Dummy variable (as per Peer Christine requested )
 * **Feedback:** The font size is too small for plots, especially the bar plots
 * **Change made:** plot is bigger when redered quarto
 * **Evidence:** reports/relationship_quality_analysis.pdf
+
+#### Fixed environment.yml
+* **Feedback:** ipykernal is misspelled in your environment.yml.
+* **Change made:** fixed spelling
+* **Evidence:** environment.yml
+
+#### Added install conda-lock line
+* **Feedback:** For first-time setup, remember to install conda-lock using: conda install -c conda-forge conda-lock
+* **Change made:** added instruction to install conda-lock
+* **Evidence:** README.me
 ---
